@@ -1,0 +1,74 @@
+[
+    {
+        "name": "ます",
+        "function": "Makes it formal",
+        "joins_with": [
+            "doushi"
+        ],
+        "godan_stem": "i",
+        "ichidan_form": "N/A",
+        "word_type": "doushi"
+    },
+    {
+        "name": "たい",
+        "function": "want to do",
+        "joins_with": [
+            "doushi"
+        ],
+        "godan_stem": "i",
+        "ichidan_form": "N/A",
+        "word_type": "keiyoushi"
+    },
+    {
+        "name": "ない",
+        "function": "not",
+        "joins_with": [
+            "keiyoushi",
+            "doushi"
+        ],
+        "godan_stem": "a",
+        "ichidan_form": "N/A",
+        "word_type": "keiyoushi"
+    },
+    {
+        "name": "れる",
+        "function": "receiving an action / get",
+        "joins_with": [
+            "keiyoushi",
+            "doushi"
+        ],
+        "godan_stem": "a",
+        "ichidan_form": "られる",
+        "word_type": "doushi"
+    },
+    {
+        "name": "せる",
+        "function": "allow to / cause to",
+        "joins_with": [
+            "doushi"
+        ],
+        "godan_stem": "a",
+        "ichidan_form": "させる",
+        "word_type": "doushi"
+    },
+    {
+        "name": "る",
+        "function": "can/able to",
+        "joins_with": [
+            "doushi"
+        ],
+        "godan_stem": "e",
+        "ichidan_form": "られる",
+        "word_type": "doushi"
+    },
+    {
+        "name": "う",
+        "function": "let's do it (other uses, look into)",
+        "joins_with": [
+            "doushi"
+        ],
+        "godan_stem": "o",
+        "ichidan_form": "よう",
+        "word_type": "doushi"
+    }
+]

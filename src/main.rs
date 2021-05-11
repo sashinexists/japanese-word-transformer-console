@@ -1,10 +1,26 @@
 use regex::Regex;
 use std::{fmt, io, str};
+use serde_json;
+
+
+struct Joshi {
+    name: String,
+    function: String,
+    joins_with: Vec<WordType>,
+    godan_stem: GodanStem,
+    ichidan_form: String,
+    word_type: WordType
+}
+
+
 
 fn main() {
     //categorise_verbs(vec!["行く","来る","食べる","歌う","起きる","話す","する","分かる","答える","くる" ])
+
+    //let example_verbs = vec!["買う", "聞く","話す","持つ","死ぬ","飛ぶ","飲む","取る"];
+
     let mut input = String::new();
-    while input != "閉じる" {
+    while input != "出る" {
         input.clear();
         println!("動詞を入力下さい　(Please enter a verb) | Alternatively, type 出る to exit");
         io::stdin().read_line(&mut input).unwrap();
@@ -13,13 +29,29 @@ fn main() {
             categorise_verbs(vec![input.as_str()]);
         }
     }
-    println!("さようなら")
+    println!("さようなら");
 }
+
 
 enum VerbGroup {
     Ichidan,
     Godan,
     Kurusuru,
+}
+
+enum WordType {
+    meishi,
+    doushi,
+    keiyoushi,
+    joshi,
+}
+
+enum GodanStem {
+    a,
+    i,
+    u,
+    e,
+    o
 }
 
 impl fmt::Display for VerbGroup {
