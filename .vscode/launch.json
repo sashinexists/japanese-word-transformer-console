@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'japanese-word-transformer'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=japanese-word-transformer",
+                    "--package=japanese-word-transformer"
+                ],
+                "filter": {
+                    "name": "japanese-word-transformer",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'japanese-word-transformer'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=japanese-word-transformer",
+                    "--package=japanese-word-transformer"
+                ],
+                "filter": {
+                    "name": "japanese-word-transformer",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
