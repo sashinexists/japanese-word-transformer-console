@@ -1,7 +1,7 @@
 [
     {
         "name": "ます",
-        "function": "Makes it formal",
+        "function": "Make it formal",
         "joins_with": [
             "Doushi"
         ],
@@ -11,7 +11,7 @@
     },
     {
         "name": "たい",
-        "function": "want to do",
+        "function": "Express Desire (I want to do it)",
         "joins_with": [
             "Doushi"
         ],
@@ -21,7 +21,7 @@
     },
     {
         "name": "ない",
-        "function": "not",
+        "function": "Make it Negative (not do it)",
         "joins_with": [
             "Keiyoushi",
             "Doushi"
@@ -32,7 +32,7 @@
     },
     {
         "name": "れる",
-        "function": "receiving an action / get",
+        "function": "Receptive form (get _____, eg; the book got read, the juice got drunk)",
         "joins_with": [
             "Keiyoushi",
             "Doushi"
@@ -43,7 +43,7 @@
     },
     {
         "name": "せる",
-        "function": "allow to / cause to",
+        "function": "Causative form (allow someone to do it, cause someone to do it)",
         "joins_with": [
             "Doushi"
         ],
@@ -53,7 +53,7 @@
     },
     {
         "name": "る",
-        "function": "can/able to",
+        "function": "Potential form (it is doable, \"can do it\")",
         "joins_with": [
             "Doushi"
         ],
@@ -63,7 +63,7 @@
     },
     {
         "name": "う",
-        "function": "let's do it (other uses, look into)",
+        "function": "Voilitional form (Let's do it)",
         "joins_with": [
             "Doushi"
         ],
