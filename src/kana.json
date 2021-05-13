@@ -1,0 +1,202 @@
+[
+    {
+        "name": "あ",
+        "consonant": "None",
+        "vowel": "A"
+    },
+    {
+        "name": "い",
+        "consonant": "None",
+        "vowel": "I"
+    },
+    {
+        "name": "お",
+        "consonant": "None",
+        "vowel": "O"
+    },
+    {
+        "name": "え",
+        "consonant": "None",
+        "vowel": "E"
+    },
+    {
+        "name": "う",
+        "consonant": "None",
+        "vowel": "U"
+    },
+    {
+        "name": "か",
+        "consonant": "K",
+        "vowel": "A"
+    },
+    {
+        "name": "さ",
+        "consonant": "S",
+        "vowel": "A"
+    },
+    {
+        "name": "た",
+        "consonant": "T",
+        "vowel": "A"
+    },
+    {
+        "name": "な",
+        "consonant": "N",
+        "vowel": "A"
+    },
+    {
+        "name": "は゛",
+        "consonant": "B",
+        "vowel": "A"
+    },
+    {
+        "name": "ま",
+        "consonant": "M",
+        "vowel": "A"
+    },
+    {
+        "name": "ら",
+        "consonant": "R",
+        "vowel": "A"
+    },
+    {
+        "name": "き",
+        "consonant": "K",
+        "vowel": "I"
+    },
+    {
+        "name": "し",
+        "consonant": "S",
+        "vowel": "I"
+    },
+    {
+        "name": "ち",
+        "consonant": "T",
+        "vowel": "I"
+    },
+    {
+        "name": "に",
+        "consonant": "N",
+        "vowel": "I"
+    },
+    {
+        "name": "び",
+        "consonant": "B",
+        "vowel": "I"
+    },
+    {
+        "name": "み",
+        "consonant": "M",
+        "vowel": "I"
+    },
+    {
+        "name": "り",
+        "consonant": "R",
+        "vowel": "I"
+    },
+    {
+        "name": "く",
+        "consonant": "K",
+        "vowel": "U"
+    },
+    {
+        "name": "す",
+        "consonant": "S",
+        "vowel": "U"
+    },
+    {
+        "name": "つ",
+        "consonant": "T",
+        "vowel": "U"
+    },
+    {
+        "name": "ぬ",
+        "consonant": "N",
+        "vowel": "U"
+    },
+    {
+        "name": "ぶ",
+        "consonant": "B",
+        "vowel": "U"
+    },
+    {
+        "name": "む",
+        "consonant": "M",
+        "vowel": "U"
+    },
+    {
+        "name": "る",
+        "consonant": "R",
+        "vowel": "U"
+    },
+    {
+        "name": "け",
+        "consonant": "K",
+        "vowel": "E"
+    },
+    {
+        "name": "せ",
+        "consonant": "S",
+        "vowel": "E"
+    },
+    {
+        "name": "て",
+        "consonant": "T",
+        "vowel": "E"
+    },
+    {
+        "name": "ね",
+        "consonant": "N",
+        "vowel": "E"
+    },
+    {
+        "name": "べ",
+        "consonant": "B",
+        "vowel": "E"
+    },
+    {
+        "name": "め",
+        "consonant": "M",
+        "vowel": "E"
+    },
+    {
+        "name": "れ",
+        "consonant": "R",
+        "vowel": "E"
+    },
+    {
+        "name": "こ",
+        "consonant": "K",
+        "vowel": "O"
+    },
+    {
+        "name": "そ",
+        "consonant": "S",
+        "vowel": "O"
+    },
+    {
+        "name": "と",
+        "consonant": "T",
+        "vowel": "O"
+    },
+    {
+        "name": "の",
+        "consonant": "N",
+        "vowel": "O"
+    },
+    {
+        "name": "ぼ",
+        "consonant": "B",
+        "vowel": "O"
+    },
+    {
+        "name": "も",
+        "consonant": "M",
+        "vowel": "O"
+    },
+    {
+        "name": "ろ",
+        "consonant": "R",
+        "vowel": "O"
+    }
+]

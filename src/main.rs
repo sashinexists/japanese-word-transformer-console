@@ -13,59 +13,25 @@ use std::{
     str::{self, FromStr},
 };
 
+mod datatypes;
+use datatypes::{Consonant as Consonant, Joshi as Joshi};
+use datatypes::Kana as Kana;
+use datatypes::Vowel as Vowel;
+use datatypes::VerbGroup as VerbGroup;
+use datatypes::WordType as WordType;
+use datatypes::kana_chart as kana_chart;
+use datatypes::joshi_list as joshi_list;
 
-#[derive(Serialize, Deserialize, Debug)]
-struct Joshi {
-    name: String,
-    function: String,
-    joins_with: Vec<WordType>,
-    godan_stem: GodanStem,
-    ichidan_form: String,
-    word_type: WordType,
-}
 
-#[derive(Serialize, Deserialize, Debug)]
-enum WordType {
-    Meishi,
-    Doushi,
-    Keiyoushi,
-    Joshi,
-}
 
-#[derive(Serialize, Deserialize, Debug)]
-enum GodanStem {
-    A,
-    I,
-    U,
-    E,
-    O,
-}
 
-#[derive(Serialize, Deserialize)]
-enum VerbGroup {
-    Ichidan,
-    Godan,
-    Kurusuru,
-}
 
 fn main() {
-    //let example_verbs = vec!["買う", "聞く","話す","持つ","死ぬ","飛ぶ","飲む","取る"];
-    //categorise_verbs(example_verbs);
+    verb_transformation_loop(&joshi_list());
 
-    const JOSHI_DATA_FILE_PATH: &str = "src/joshi.json";
-
-    let joshi_data =
-        fs::read_to_string(JOSHI_DATA_FILE_PATH).expect("Something went wrong reading the file");
-
-    let joshi_list: Vec<Joshi> = serde_json::from_str(joshi_data.as_str()).unwrap();
-
-    verb_transformation_loop(&joshi_list);
-    //println!("{:#?}", joshi_list[3]);
-
-    //verb_categoriser_loop();
 }
 
-fn verb_transformation_loop(joshi_list:&Vec<Joshi>) {
+fn verb_transformation_loop(joshi_list: &Vec<Joshi>) {
     let mut input = String::new();
     while input != "出" {
         input.clear();
@@ -80,53 +46,72 @@ fn verb_transformation_loop(joshi_list:&Vec<Joshi>) {
             io::stdin().read_line(&mut action).unwrap();
             action.pop();
             let action = action.parse::<usize>().unwrap();
-            println!("The {}-form of {} is {}", joshi_list[action].name, input, transform_verb(&input, &joshi_list[action]) );
+            println!(
+                "The {}-form of {} is {}",
+                joshi_list[action].name,
+                input,
+                transform_verb(&input, &joshi_list[action])
+            );
         }
     }
     println!("さようなら");
 }
 
-fn build_transformation_menu(joshi_list:&Vec<Joshi>) -> String {
+fn build_transformation_menu(joshi_list: &Vec<Joshi>) -> String {
     let mut output = String::new();
     for i in 0..joshi_list.len() {
-        output += &format!("{})  {}  | {}\n", i, joshi_list[i].function, joshi_list[i].name);
+        output += &format!(
+            "{})  {}  | {}\n",
+            i, joshi_list[i].function, joshi_list[i].name
+        );
     }
     output
 }
 
-fn transform_verb(verb: &str, joshi:&Joshi) -> String {
+fn transform_verb(verb: &str, joshi: &Joshi) -> String {
     let verb_group = categorise_verb(verb);
     match verb_group {
         VerbGroup::Ichidan => transform_ichidan_verb(verb, joshi),
         VerbGroup::Godan => transform_godan_verb(verb, joshi),
-        VerbGroup::Kurusuru => transform_kuru_suru(verb, joshi)
+        VerbGroup::Kurusuru => transform_kuru_suru(verb, joshi),
     }
 }
 
-fn transform_ichidan_verb(verb: &str, joshi:&Joshi) -> String{
+fn transform_ichidan_verb(verb: &str, joshi: &Joshi) -> String {
     let mut sticky_stem = verb.to_string();
     sticky_stem.pop();
-    if joshi.ichidan_form=="N/A" {
+    if joshi.ichidan_form == "N/A" {
         sticky_stem + joshi.name.as_str()
     } else {
         sticky_stem + joshi.ichidan_form.as_str()
     }
 }
 
-fn transform_godan_verb(verb: &str, joshi:&Joshi) -> String {
-    "ITS A GODDAMN GODAN VERB".to_string()
+fn transform_godan_verb(verb: &str, joshi: &Joshi) -> String {
+    let sticky_stem = get_godan_stem(verb, &joshi.godan_stem);
+    sticky_stem + &joshi.name
 }
 
-fn get_godan_stem(verb: &str, stem:GodanStem) -> String {
-    "hello".to_string()
+fn get_godan_stem(verb: &str, stem: &Vowel) -> String {
+    let last_kana = verb.to_string().pop().unwrap();
+    let kana_chart = kana_chart();
+    let vowel = stem;
+    let consonant = &kana_chart[&last_kana].1;
+    let mut sticky_stem = String::new();
+    for (kana,(kana_vowel,kana_consonant)) in &kana_chart {
+        if *kana_vowel==*vowel && *kana_consonant == *consonant {
+            sticky_stem = kana.to_string();
+        }
+    }
+    let mut verb = verb.to_string();
+    verb.pop();
+    verb + &sticky_stem
 }
 
-
-
-fn transform_kuru_suru(verb: &str, joshi:&Joshi) -> String {
+fn transform_kuru_suru(verb: &str, joshi: &Joshi) -> String {
     "THIS IS KURU OR SURU".to_string()
 }
-
+/*
 fn verb_categoriser_loop() {
     let mut input = String::new();
     while input != "出る" {
@@ -139,9 +124,7 @@ fn verb_categoriser_loop() {
         }
     }
     println!("さようなら");
-}
-
-
+} */
 
 impl fmt::Display for VerbGroup {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -153,8 +136,6 @@ impl fmt::Display for VerbGroup {
     }
 }
 
-
-
 fn categorise_verb(verb: &str) -> VerbGroup {
     if is_kuru_or_suru(verb) {
         VerbGroup::Kurusuru
@@ -164,7 +145,7 @@ fn categorise_verb(verb: &str) -> VerbGroup {
         VerbGroup::Godan
     }
 }
-
+/*
 fn categorise_verbs(verbs: Vec<&str>) {
     // This is really for testing
     for i in 0..verbs.len() {
@@ -174,7 +155,7 @@ fn categorise_verbs(verbs: Vec<&str>) {
             categorise_verb(verbs[i]).to_string()
         );
     }
-}
+} */
 
 fn is_ichidan_verb(verb: &str) -> bool {
     let ichidan_rules: Regex =
@@ -186,7 +167,7 @@ fn is_kuru_or_suru(verb: &str) -> bool {
     let kuru_or_suru: Regex = Regex::new(r"(来|く|す)る$").unwrap();
     kuru_or_suru.is_match(verb)
 }
-
+/* 
 fn is_godan_verb(verb: &str) -> bool {
     !is_ichidan_verb(verb) && !is_kuru_or_suru(verb)
-}
+}*/
